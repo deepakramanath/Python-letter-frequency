@@ -1,0 +1,157 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\section{Motivation}
+\label{sec:introduction}
+
+The word \emph{Hypersonic} was first introduced by \citet{Tsien:1946} to define flow at very high speeds, usually of Mach number 5 or greater than about 5. At these speeds both the velocity and temperature of the gas over the vehicles become important. First studies of hypersonic problems date back to 1950s to early 1960s during design and development of intercontinental ballistic missiles. Ever since, there has been growing impetus towards hypersonic transportation systems, planetary missions, deep space probes, Space shuttle orbiter etc.\\
+
+These vehicles travel typically at 7 km/s to 10 km/s, thus covering both suborbital and superorbital velocities and high enthalpies, of the order of 20 MJ/kg to 50 MJ/kg. Physical and aerodynamic aspects of hypersonic flows, generally referred to as \emph{aerothermodynamics} need to be well understood for the design of efficient and reliable space vehicles. Some consequences of poor understanding of aerothermodynamic phenomena include the ineffectiveness of Space Shuttle flaps and tail protection system damage in Gemini capsule due to inviscid/viscous interaction \citep{Bertin:2003}. More catastrophic failures include the shock/shock interaction on X-15 that damaged the ventral fin, and the disaster of Space Shuttle, Columbia in 2003 caused by excessive heating during atmospheric reentry \citep{Bertin:2006}.\\
+
+An important phenomenon that is often present in such hypersonic flights is the flow separation. This occurs due to the interaction of external and/or internal flows with various geometric design features, leading to adverse pressure gradients and consequent intense localised heating, thus changing the characteristics of the flow over the vehicle. Typical examples where flow separation occur are behind blunt bodies, vicinity of surface discontinuity such as steps and gaps, deflection of control surfaces giving rise to shock wave/boundary layer interaction. The phenomenon of flow separation at high speeds therefore has received considerable attention over the past decades due to its significance in the design of space vehicles. High speed flow separation has been extensively investigated experimentally, theoretically and in recent years numerically through computational fluid dynamics (CFD) and direct simulation Monte Carlo (DSMC). Although these have increased our knowledge considerably, large gaps still remain in our understanding of the aerothermodynamics of flow separation.\\
+
+Flow separation can be effectively studied with simple configurations, representing a number of generic regions of separated flow on a space vehicle. These could be ranging from flow over steps, forward facing or rearward facing, compression corners to shock impingement on flat plates, etc. Of these, two of the simplest configurations, the rearward facing step and the two-dimensional compression corner have been investigated here through CFD. The rearward facing step has been studied for suborbital and superorbital planetary entry conditions up to a total specific enthalpy of 50 MJ/kg. The flow over a two-dimensional compression corner has been studied up to a total specific enthalpy of 20 MJ/kg. \\
+
+The rearward facing step and the compression corner geometry at the flow conditions investigated have not been, to the authors knowledge, done before in such detail.\\
+
+Whenever, hypersonic separated flows are investigated through CFD based on Navier-Stokes solutions, generally, a steady state result is preferred utilising the implicit time integration approach. This is mainly due to the fact that faster convergence through pseudo-time stepping can be achieved over refined grids that are necessary to capture large gradients with high velocities and temperatures typically encountered in hypersonic flows. However, this is achieved at the cost of large truncation errors and exact transients effects may not be achievable \citep{Wendt:2009}.\\
+
+On the other hand, time-accurate solutions to Navier-Stokes equations using explicit time stepping is an alternative. In this the governing equations exhibit hyperbolic nature and eliminate the dependency on Mach number \citep{Yahia:1996} and a mathematically well posed problem is assured \citep{Anderson:1995}. It does, however require enormous number of computational time steps ($\sim$ $10^6$ to $10^9$) to achieve steady state in hypersonic separated flows \citep{Druguet:2005}. In such a case \emph{high grid resolution} may become prohibitive due to extremely small time step chosen for numerical stability. The numerical stability for hyperbolic system of equations is normally achieved via the \emph{Courant-Friedrichs-Lewy} (CFL) condition \citep{Anderson:1995}, which is given as.
+
+\begin{equation}
+c_x \frac{\Delta t}{\Delta x} \leq 1
+\label{eq:CFL-condition-intro}
+\end{equation}
+
+As evident from equation~\eqref{eq:CFL-condition-intro}, $\Delta t \leq \Delta x/c_x$, where $c_x$ is the wave propagation speed or the speed of convective signal. Hence, as the wave speed increases and $\Delta x \rightarrow 0$ with grid refinement, $\Delta t \rightarrow 0$, that is, a very small time step is attained to satisfy the CFL criterion. To the authors knowledge, no time-accurate Navier-Stokes analysis of high enthalpy separated flows up to 50 MJ/kg have been reported so far.\\
+
+In the authors opinion, however, time-accurate solution is preferable when dealing with transient flow phenomena such as those that prevail in transient test facilities and when comparing the CFD results with experimental data obtained therein.\\
+
+For the suborbital and superorbital flows considered here, real gas effects are inherently present and thus the significance of these in the regions of flow separation need to be carefully investigated. This is because of the complicated nature of the flow field and several phenomena occurring simultaneously along with real gas physics. This necessitates a thorough validation of CFD codes and physico-chemical models used and to compare with the available experimental data.\\
+
+The CFD codes used in the present investigation are primarily time-accurate Navier-Stokes codes and they have been essentially developed for shock tunnel and expansion tube flow simulations. They have not generally been used to study slender body separated flows or shock wave/boundary layer interaction phenomena at high enthalpies. Over the years, some blunt body flows have been investigated. See for example \citet{Johnston:a:1999, Gollan:2008, Park:b:2010} and \citet{Potter:2010}.
+
+\section{Approach to the Problem}
+\label{sec:problem-approach}
+
+Flight experiments are ultimate simulations that can provide high quality reliable data. As \citet{Bertin:2006} point out, this is especially true for space vehicles which encounter hypersonic aerothermodynamic environments. Flight tests, however, are prohibitively expensive to study fundamental behaviour of flow phenomena. Recourse, therefore, is taken to ground based facilities. But these too have their own limitations. Firstly, continuous running hypersonic high enthalpy tunnels are precluded due to their enormous energy requirements and also limitations of strengths of materials to withstand high pressures and temperatures. This has led to the development of short duration (of the order milliseconds) shock and expansion tunnels. With progress in the development of instrumentation, such facilities have been proven very useful to study fundamental phenomena of hypersonic aerothermodynamics. However, they have the inherent limitation that the flow achieved is generally in nonequilibrium state while it is in equilibrium state in real flight. Still, these facilities have proved their worth in the studies of fundamental flow phenomena and continue to be an essential part of fluid mechanics research.\\
+
+The other tool in recent years has been the \emph{computational fluid dynamics} (CFD). This facilitates the full solution of the Navier-Stokes equations in every part of the physical domain under consideration. This makes it an attractive approach. In addition, flow conditions that are experimentally intractable, can be accommodated in CFD. A very good example of this is the initial flow field calculation around a Galileo probe at 50 km/s \citep{Moss:1982}. At present, CFD is only limited by the availability of realistic and reliable physical models. Approximations such as viscous shock layer technique or the parabolised Navier-Stokes need not be invoked. Another potential advantage of CFD is that the flow can be analysed in detail either by including or excluding any physical flow characteristics, such as inviscid/viscous, laminar/turbulent, frozen/equilibrium/nonequilibrium chemistry, thermal equilibrium/nonequilibrium. This allows for a better understanding of the underlying physics.\\
+
+In CFD, usually the simulations are quite accurate and have good repeatability. However, there are considerable challenges. Firstly, CFD heavily depends on the validity of the physical model used and assumptions made. In hypersonic simulations involving real gas effects, where a complicated flow field  exists the predictions depend on our theoretical understanding and the certainty of physico-chemical models \citep{Sarma:2000}. Then there are the grid generation challenges, but sufficient level of sophistication has been achieved in recent years.
+
+\section{Hypersonic Separated Flow Features}
+\label{sec:flow_features}
+
+\subsection{Rearward Facing Step}
+\label{sec:step-schematic}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{chapter1/schematic_step}
+\caption[Schematic representation of flow features over a rearward facing step]{Schematic representation of flow features over a rearward facing step}
+\label{fig:schematic_step}
+\end{center}
+\end{figure}
+
+The viscous flow features over a two-dimensional rearward facing step is illustrated in Figure~\ref{fig:schematic_step}. A boundary layer ($\delta$) develops as a consequence of flow over the flat plate upstream of the corner, with the formation of a leading edge shock wave. Under high enthalpy conditions, the temperature within the boundary layer would be sufficiently high to cause changes in the internal distribution of energy of the gas. This leads to molecular excitation that may induce chemical reactions via dissociation and ionisation. These give rise to thermo-chemical, nonequilibrium behaviour of the flow, normally referred to as \emph{real gas} effects and the flow then can no longer be treated as perfect gas \citep{Anderson:2006}.\\
+
+As the flow approaches the lip of the step, an expansion fan emerges and the flow undergoes a strong expansion. In the vicinity of the top corner of the step, the boundary layer separates forming a free shear layer. An over expansion of the flow at the corner is followed by a recompression to the base pressure through a lip shock. The lip shock is often embedded in the shear layer for high Mach and low Reynolds number flows by \citet{Hama:1966,Hama:1968}. Due to strong over expansion at the sharp corner, and because of viscous effects, the boundary layer separates at a finite distance from the corner over the face of the step. The separated shear layer reattaches to the plate some distance downstream. In this region, the compression waves coalesce to form a recompression or reattachment shock wave. As a result, the flow passing through it is aligned parallel to the plate surface. This region is termed as the \emph{neck region} due to the thinning of the shear layer before again growing downstream.\\
+
+A dividing streamline that originates between separation and reattachment allows some of  the flow from the shear layer to continue downstream of reattachment and the remaining flow to form a recirculation region. Within the separated flow region, the zero velocity line delineates the flow in the forward and the reverse direction. Depending upon the Reynolds number, a secondary vortex may form at the bottom corner between the face and the plate that has a counter clock wise direction.
+
+\subsection{Two Dimensional Compression Ramp}
+\label{sec:corner-schematic}
+
+The features of hypersonic laminar flow past a two-dimensional compression corner are illustrated through a schematic representation in Figure~\ref{fig:schematic_corner}. It is characterised by a boundary layer over the flat plate with a leading edge shock. The existence of the corner, causes a shock wave (ramp shock) that results in a gradual pressure rise due to the interaction with the boundary layer. For sufficiently large corner angle ($\theta_w$), the shock wave is strong enough to cause boundary layer separation ($S$) upstream of the corner forming a separation bubble with recirculating flow.\\
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{chapter1/schematic_corner}
+\caption[Schematic representation of flow features over a compression corner]{Schematic representation of flow features over a compression corner}
+\label{fig:schematic_corner}
+\end{center}
+\end{figure}
+
+A separation shock wave in turn forms at the location where the boundary layer separates.  Downstream from the corner the separated shear layer reattaches ($R$) to the surface. When reattachment occurs, the thickness of the shear layer is reduced as the flow accelerates and turns towards the surface forming a \emph{neck}. The compression waves thus generated coalesce to form a reattachment shock. Downstream of the reattachment the shear layer grows and the flow eventually becomes parallel to the surface. Depending upon the freestream Mach number, the leading edge shock may interact with the separation or reattachment shock. Similarly, the separated shock may interact with the reattachment shock forming a shock/shock interaction with the emergence of a slip stream.\\
+
+Typically, the distributions of heat flux, skin friction and pressure upstream of the corner are similar to those over a flat plate. Due to adverse pressure gradient, caused by the presence of the corner, the pressure increases, but both heat flux and skin friction decrease. For a fully separated flow, the skin friction changes to negative and becomes positive after reattachment. The heat flux has a typically rounded distribution. The pressure distribution shows a plateau after an initial rise and shows a rapid rise at reattachment. Figure~\ref{fig:schematic_distribution} shows typical distributions of heat flux, skin friction and pressure.
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{chapter1/schematic_St-p-cf}
+\caption[Schematic distribution of surface parameters over a compression corner]{Schematic distribution of surface parameters over a compression corner}
+\label{fig:schematic_distribution}
+\end{center}
+\end{figure}
+
+\section{Scope of Research}
+\label{sec:Research-scope}
+
+The main aim of this thesis is to understand the aerothermodynamics of two simple types of flow geometry at high enthalpy conditions using time-accurate computational fluid dynamics (CFD). Firstly, this research is intended to complement the experimental work carried out by \citet{Hayne:c:2004} on the flow over a rearward facing step. The experimental work associated with this configuration was conducted in the University of Queensland, X2 expansion tube facility with air as the test gas for both suborbital and superorbital flow conditions at total specific enthalpies of 26 MJ/kg and 50 MJ/kg respectively.\\
+
+The separated flow over the simple configuration of a rearward facing step was chosen by \citet{Hayne:c:2004} for his experiments as data on separated flows at high enthalpies is very sparse. A step height of 2 $mm$ was chosen in the experiments. This is because, the test times available in the X2 expansion tube facility is of the order of 90 $\mu s$. Due to this short duration, the main concern is to ensure that a steady flow over the flat plate and subsequent steady separated flow behind the step can be achieved. In this thesis, we investigate this flow computationally, and also examine the aerothermodynamics, and critically compare the experimental data. To date, computations of separated flow at such high enthalpies do not exist, much less their comparison with experimental data. In addition, the effect of rounded corner on separation and reattachment were also investigated.\\
+
+In the second part, a CFD analysis of flow over a compression ramp was conducted to complement the comprehensive experimental work carried out by \citet{Mallinson:1994} in a free piston shock tunnel. The total specific enthalpy considered in these experiments were 3 MJ/kg and 20 MJ/kg with air as test gas. The freestream Mach and the Reynolds number provided attached, incipiently separated and fully separated flow conditions for ramp angles between $\theta_w=5^\circ$ to $24^\circ$. Previous studies at similar ramp angles by \citet{Holden:1970} were restricted to low enthalpy conditions, where real gas effects are mostly insignificant. \citet{Mallinson:1994} conducted his experiments at higher enthalpies to investigate real gas effects, if any. His conclusions was that real gas effects were not significant. The present CFD analysis re-examines this topic and provides critical comparison between CFD and his experimental data.\\
+
+The present CFD code has also been used to simulate flow over a $25^\circ / 55^\circ$ double cone configuration with nitrogen as the test gas. This particular configuration is often considered to be very challenging computationally to simulate because of the complex shock/wave boundary layer interactions. These simulations are then compared with other benchmark codes and experimental data to get a perspective on the efficacy of the code.\\
+
+Tabel~\ref{table:configuration_summary} presents the summary of the configurations along with their main parameters investigated in this thesis.\\
+
+\begin{table}
+\begin{center}
+\caption{Configuration summary}
+\label{table:configuration_summary}
+\setlength{\extrarowheight}{4pt}
+\begin{tabular}{cc}
+\hline
+\hline
+\textbf{Configuration} & \textbf{Condition} \\
+\\
+\multirow{4}{*}{\includegraphics[width=0.25\columnwidth]{chapter1/schematic_step-mini}} & \textbf{$H_o$=50.0 MJ/kg} \\
+& $u_\infty=9652$ m/s;  $R_{e\infty}$=$6.23\times10^5$ 1/m ; $M_\infty$=11.0\\
+\\
+& \textbf{$H_o$=26.0 MJ/kg} \\
+&  $u_\infty=6872$ m/s; $R_{e\infty}$=$1.82\times10^6$ 1/m ; $M_\infty$=7.6 \\
+\\
+\hline
+\\
+\multirow{4}{*}{\includegraphics[width=0.25\columnwidth]{chapter1/schematic_corner-mini}} & \textbf{$H_o$=19.0 MJ/kg} \\
+& $u_\infty=5470$ m/s; $R_{e\infty}$=$3.10\times10^5$ 1/m ; $M_\infty$=7.5 \\
+\\
+& \textbf{$H_o$=2.83 MJ/kg} \\
+&  $u_\infty=2280$ m/s ; $R_{e\infty}$=$32.2\times10^5$ 1/m ; $M_\infty$=9.1 \\ 
+\\
+\hline
+\\
+\multirow{6}{*}{\includegraphics[width=0.25\columnwidth]{chapter1/schematic_double-cone-mini}} & \\
+ & \\
+ & \textbf{$H_o$=3.6 MJ/kg} \\
+&  $u_\infty=2664$ m/s ; $R_{e\infty}$=$130.9\times10^3$ 1/m ; $M_\infty$=10.4 \\ 
+& \\
+ & \\
+\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Thesis Overview}
+\label{sec:thesis-overview}
+
+This thesis is organised into ten chapters. In this chapter, the motivation and approach to the problem have been established. A literature review covering some past computational studies of rearward facing step and compression corner are presented in \emph{Chapter~\ref{chap:literature-review}}. A brief account of some salient experimental investigation is also given. The review is restricted to two-dimensional flows.\\
+
+\emph{Chapter~\ref{Computational Approach}} discusses the computational approach that includes the CFD codes and the physico-chemical models used with their implementation methodologies. This chapter also includes grid convergence study performed for both rearward facing step and compression corner geometries. As discussed earlier regarding the short duration test times of X2 expansion tube facility, the concern of flow establishment is addressed in \emph{Chapter~\ref{chap:flow_cond_estab}} through computational flow establishment studies. These have been performed for both the flat plate and the rearward facing step for X2 flow conditions. Subsequently, flow establishment is studied over the two-dimensional compression ramp for T3 shock tunnel conditions.\\
+
+\emph{Chapter~\ref{chap:flat-plate}} presents CFD simulations over a two-dimensional sharp leading edge flat plate in both suborbital and superorbital flows. Two different CFD codes are used to analyse the features assuming perfect gas, chemical nonequilibrium and chemical plus thermal nonequilibrium. Surface heat flux is compared with the experimental data to draw some inferences. Surface pressure and skin friction distributions are shown and discussed.\\
+
+\emph{Chapter~\ref{chap:step-sharp}} describes CFD simulations over a two-dimensional rearward facing step in suborbital and superorbital flow. Particular emphasis is given to flow features in the vicinity of the step, separation/reattachment region and downstream of reattachment. These were achieved by quantifying heat flux, skin friction and pressure distributions using perfect gas, chemical nonequilibrium and chemical plus thermal nonequilibrium models with two similar CFD codes. Separation and reattachment locations were identified through skin friction distributions and the influence of real gas effects are discussed. The perfect gas assumption of the CFD code is verified by comparing the results with previous numerical data. For both the flow conditions, heat flux obtained from all the three models are compared with experiments downstream of the step. The influence of rounded corners on the flow features in the vicinity of the step and in regions of separation and reattachment is presented in \emph{Chapter~\ref{chap:ste-round}}. Flow features are compared with the sharp corner geometry to draw some conclusions.\\
+
+\emph{Chapter~\ref{chap:corner}} discusses the CFD simulations over a two-dimensional compression corner. Both high and low enthalpy conditions were investigated. Surface heat flux and pressure in the interaction region and downstream of reattachment are compared with experiments and previous numerical data. Both perfect and chemical plus thermal nonequilibrium simulations were performed to highlight real gas effects for the high enthalpy flow. \\
+
+A critical discussion of the results from this code with other benchmark computations and experimental data on the $25^\circ / 55^\circ$ axisymmetric double cone is presented in \emph{Chapter~\ref{chap:Double-cone}}.\\
+
+Finally, summary and conclusions are presented in \emph{Chapter~\ref{chap:Summary-Conclusions}}.
+
+
